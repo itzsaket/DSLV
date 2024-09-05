@@ -1,0 +1,9 @@
+[submodule "modules/imgui"]
+	path = modules/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "modules/implot"]
+	path = modules/implot
+	url = https://github.com/epezent/implot.git
+[submodule "modules/glfw"]
+	path = modules/glfw
+	url = https://github.com/glfw/glfw.git
