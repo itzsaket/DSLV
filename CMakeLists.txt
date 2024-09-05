@@ -2,11 +2,14 @@ cmake_minimum_required(VERSION 3.10)
 
 project(DSLV_Drone_Simulation_and_Log_Viewer)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 99)
 
 # Add the source files for the project
 set(SRC_FILES
     main.cpp
-    # src/log_parser.cpp
+    LogViewer.cpp
+    simulation.cpp
+    ${PROJECT_SOURCE_DIR}/libraries/File_Dialogs/tinyfiledialogs.cpp
 )
 
 # Add the ImGui source files
@@ -29,12 +32,7 @@ set(IMPLOT_FILES
 # Add GLFW submodule
 add_subdirectory(${PROJECT_SOURCE_DIR}/modules/glfw)
 
-# Include directories for ImGui and ImPlot
-include_directories(${PROJECT_SOURCE_DIR}/modules/imgui)
-include_directories(${PROJECT_SOURCE_DIR}/modules/implot)
-include_directories(${PROJECT_SOURCE_DIR}/modules/imgui/backends)
-
-# Add executable target
+# Add executable target, including tinyfiledialogs.cpp directly
 add_executable(DSLV ${SRC_FILES} ${IMGUI_FILES} ${IMPLOT_FILES})
 
 # Link GLFW, OpenGL, and necessary libraries for Windows
@@ -52,3 +50,18 @@ target_link_libraries(DSLV
     comdlg32
     advapi32
 )
+
+# Target-specific include directories
+target_include_directories(DSLV PRIVATE
+    ${PROJECT_SOURCE_DIR}/modules/imgui
+    ${PROJECT_SOURCE_DIR}/modules/implot
+    ${PROJECT_SOURCE_DIR}/modules/imgui/backends
+    ${PROJECT_SOURCE_DIR}/libraries/File_Dialogs
+)
+
+# Add compile definitions for C/C++ compatibility
+add_compile_definitions(__STDC_LIMIT_MACROS)
+add_compile_definitions(__STDC_CONSTANT_MACROS)
+
+# Optional: Add compile options for warnings (you can adjust as needed)
+add_compile_options(-Wall -Wextra -Wpedantic)
