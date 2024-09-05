@@ -3,14 +3,11 @@ cmake_minimum_required(VERSION 3.10)
 project(DSLV_Drone_Simulation_and_Log_Viewer)
 set(CMAKE_CXX_STANDARD 17)
 
-# Add the source files for your project
+# Add the source files for the project
 set(SRC_FILES
     main.cpp
     # src/log_parser.cpp
 )
-
-# Include directories for GLFW
-include_directories(${PROJECT_SOURCE_DIR}/modules/glfw/include)
 
 # Add the ImGui source files
 set(IMGUI_FILES
@@ -29,25 +26,29 @@ set(IMPLOT_FILES
     ${PROJECT_SOURCE_DIR}/modules/implot/implot_items.cpp
 )
 
-# Find and link GLFW (assuming you are using vcpkg or another package manager)
-add_subdirectory(modules/glfw)
-
-# Find OpenGL
-find_package(OpenGL REQUIRED)
-
-# Add executable target (DSLV)
-add_executable(DSLV ${SRC_FILES} ${IMGUI_FILES} ${IMPLOT_FILES})
+# Add GLFW submodule
+add_subdirectory(${PROJECT_SOURCE_DIR}/modules/glfw)
 
 # Include directories for ImGui and ImPlot
-target_include_directories(DSLV PRIVATE 
-    ${PROJECT_SOURCE_DIR}/modules/imgui
-    ${PROJECT_SOURCE_DIR}/modules/implot
-    ${PROJECT_SOURCE_DIR}/modules/imgui/backends
-)
+include_directories(${PROJECT_SOURCE_DIR}/modules/imgui)
+include_directories(${PROJECT_SOURCE_DIR}/modules/implot)
+include_directories(${PROJECT_SOURCE_DIR}/modules/imgui/backends)
 
-# Link libraries to the executable
-target_link_libraries(DSLV 
-    glfw                  # Link GLFW
-    OpenGL::GL            # Link OpenGL
-    imgui
+# Add executable target
+add_executable(DSLV ${SRC_FILES} ${IMGUI_FILES} ${IMPLOT_FILES})
+
+# Link GLFW, OpenGL, and necessary libraries for Windows
+target_link_libraries(DSLV
+    glfw                 # Link GLFW submodule as a library
+    opengl32             # Link OpenGL directly (Windows OpenGL library)
+    kernel32
+    user32
+    gdi32
+    winspool
+    shell32
+    ole32
+    oleaut32
+    uuid
+    comdlg32
+    advapi32
 )
