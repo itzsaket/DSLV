@@ -1,0 +1,6 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+<file alias="shaders/vertex.glsl">D:/ITBS2/DSLV/shaders/vertex.glsl</file>
+<file alias="shaders/fragment.glsl">D:/ITBS2/DSLV/shaders/fragment.glsl</file>
+</qresource>
+</RCC>

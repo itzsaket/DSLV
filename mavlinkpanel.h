@@ -1,0 +1,4 @@
+#ifndef MAVLINKPANEL_H
+#define MAVLINKPANEL_H
+
+#endif // MAVLINKPANEL_H

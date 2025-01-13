@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SplitTab</class>
+ <widget class="QWidget" name="SplitTab">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <layout class="QVBoxLayout" name="vehicle1MainLayout">
+     <item>
+      <layout class="QHBoxLayout" name="vehicle1ControlsLayout">
+       <item>
+        <widget class="QComboBox" name="portComboBox1"/>
+       </item>
+       <item>
+        <widget class="QComboBox" name="baudRateComboBox1"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="connectButton1">
+         <property name="text">
+          <string>Connect 1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="disconnectButton1">
+         <property name="text">
+          <string>Disconnect 1</string>
+         </property>
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="vehicle1StatusLabel">
+         <property name="text">
+          <string>Vehicle 1: Disconnected</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QOpenGLWidget" name="vehicle1OrientationWidget">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>300</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="vehicle2MainLayout">
+     <item>
+      <layout class="QHBoxLayout" name="vehicle2ControlsLayout">
+       <item>
+        <widget class="QComboBox" name="portComboBox2"/>
+       </item>
+       <item>
+        <widget class="QComboBox" name="baudRateComboBox2"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="connectButton2">
+         <property name="text">
+          <string>Connect 2</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="disconnectButton2">
+         <property name="text">
+          <string>Disconnect 2</string>
+         </property>
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="vehicle2StatusLabel">
+         <property name="text">
+          <string>Vehicle 2: Disconnected</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QOpenGLWidget" name="vehicle2OrientationWidget">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>300</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
